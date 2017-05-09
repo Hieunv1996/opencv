@@ -7,19 +7,22 @@ CPP_SRCS += \
 ../src/DisplayImage.cpp \
 ../src/Image2Gray.cpp \
 ../src/ImagePixel.cpp \
-../src/OpenWebcam.cpp 
+../src/OpenWebcam.cpp \
+../src/ResizeIamge.cpp 
 
 OBJS += \
 ./src/DisplayImage.o \
 ./src/Image2Gray.o \
 ./src/ImagePixel.o \
-./src/OpenWebcam.o 
+./src/OpenWebcam.o \
+./src/ResizeIamge.o 
 
 CPP_DEPS += \
 ./src/DisplayImage.d \
 ./src/Image2Gray.d \
 ./src/ImagePixel.d \
-./src/OpenWebcam.d 
+./src/OpenWebcam.d \
+./src/ResizeIamge.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
