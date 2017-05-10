@@ -23,7 +23,7 @@
 // }
 // Mat gray_image;
 // cvtColor( image, gray_image, COLOR_BGR2GRAY );
-// imwrite( "/home/hieunv/workspace/DisplayImage/imgs/Gray_Image.jpg", gray_image );
+// imwrite( "/home/hieunv/workspace/OpenCV/imgs/gray.jpg", gray_image );
 // namedWindow( imageName, WINDOW_AUTOSIZE );
 // namedWindow( "Gray image", WINDOW_AUTOSIZE );
 // imshow( imageName, image );

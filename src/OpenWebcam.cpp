@@ -13,7 +13,14 @@
 //          cap >> frame;
 //          if( frame.empty() ) break; // end of video stream
 //          imshow("this is you, smile! :)", frame);
-//          if( waitKey(10) == 27 ) break; // stop capturing by pressing ESC
+//          if(waitKey(10) == 32){
+//        	  namedWindow("Capture",WINDOW_AUTOSIZE);
+//        	  imshow("Capture",frame);
+//          }else if( waitKey(10) == 27 )  // stop capturing by pressing ESC
+//          {
+//        	  break;
+//          }
+//
 //    }
 //    // the camera will be closed automatically upon exit
 //    // cap.close();
