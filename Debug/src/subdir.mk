@@ -4,34 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/CropImage.cpp \
-../src/DisplayImage.cpp \
-../src/ExtractFrame.cpp \
-../src/Image2Gray.cpp \
-../src/ImagePixel.cpp \
-../src/OpenWebcam.cpp \
-../src/ResizeIamge.cpp \
-../src/test.cpp 
+../src/BienSo.cpp \
+../src/main.cpp 
 
 OBJS += \
-./src/CropImage.o \
-./src/DisplayImage.o \
-./src/ExtractFrame.o \
-./src/Image2Gray.o \
-./src/ImagePixel.o \
-./src/OpenWebcam.o \
-./src/ResizeIamge.o \
-./src/test.o 
+./src/BienSo.o \
+./src/main.o 
 
 CPP_DEPS += \
-./src/CropImage.d \
-./src/DisplayImage.d \
-./src/ExtractFrame.d \
-./src/Image2Gray.d \
-./src/ImagePixel.d \
-./src/OpenWebcam.d \
-./src/ResizeIamge.d \
-./src/test.d 
+./src/BienSo.d \
+./src/main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
