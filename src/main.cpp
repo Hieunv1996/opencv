@@ -5,35 +5,67 @@
  *      Author: hieunv
  */
 #include "BienSo.h"
+#include <sstream>
+#include <dirent.h>
+template<typename T>
+std::string numberToString(T Number) {
+	std::ostringstream ss;
+	ss << Number;
+	return ss.str();
+}
 
-int main(){
-	Mat image = imread("/home/hieunv/Desktop/Car/plate_1972.0(810,350).jpg");
+bool checkExtension(string path, string ex){
+	string e = "";
+	for(int i = path.length()-1;i >= 0;i--){
+		if(path[i] =='.') break;
+		e = path[i] + e;
+	}
+	return ex.compare(e) == 0;
+}
 
-	BienSo *bs = new BienSo(image);
+vector<string> getListItem(char* url) {
+	vector<string> v;
+	DIR *dir;
+	struct dirent *ent;
+	if ((dir = opendir(url)) != NULL) {
+		/* print all the files and directories within directory */
+		while ((ent = readdir(dir)) != NULL) {
+			if(checkExtension(ent->d_name,"jpg")){
+//				cout<<ent->d_name<<endl;
+				v.push_back(ent->d_name);
+			}
+		}
+		closedir(dir);
+	} else {
+		cout<<"could not open directory"<<endl;
+		perror("");
+	}
+	return v;
+}
 
-	imshow("Image",bs->getImage());
+int main() {
+	char *url = ("/home/hieunv/Desktop/Car/");
+	string rs = "/home/hieunv/Desktop/result/";
+	string bi = "/home/hieunv/Desktop/binary/";
+	vector<string> files = getListItem(url);
+	for (int i = 0; i < files.size(); ++i) {
+		Mat image = imread(url + files[i]);
 
-	Mat gray = bs->img2Gray();
-
-	Mat binary = bs->img2Binary(gray);
-
-	bs->findPlate(binary);
-
-	imshow("Rotate",bs->getImage());
-
-	binary = bs->img2Gray();
-
-	binary = bs->img2Binary(binary);
-
-	imshow("Binary",binary);
-
-	Mat result = bs->cropImg(binary);
-
-	imshow("Result",result);
+		BienSo *bs = new BienSo(image);
+		Mat gray = bs->img2Gray();
+//		imshow("Gray", gray);
+		Mat binary = bs->img2Binary(gray);
+		string name = bi + files[i];
+		imwrite(name, binary);
+		Mat plate = bs->findPlate(gray);
+		if (plate.data) {
+			string name = rs + files[i];
+			imwrite(name, plate);
+		}else{
+		}
+	}
 
 	waitKey(0);
 	return 0;
 }
-
-
 
